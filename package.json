@@ -2,7 +2,8 @@
   "dependencies": {
     "browserify": "^17.0.0",
     "ethers": "^5.5.3",
-    "watchify": "^4.0.0"
+    "watchify": "^4.0.0",
+    "@klaytn/ethers-ext": "0.9.7-beta"
   },
   "scripts": {
     "build": "browserify index.js --standalone bundle -o ./dist/bundle.js",
