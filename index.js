@@ -141,8 +141,42 @@ async function execute() {
         }
       };
 
-      const sentTx = await signer.sendTransaction(tx);
-      console.log("sentTx", sentTx);
+      // 1. 
+      // const populatedTx = await signer.populateTransaction(tx);
+      // const signedTx = await signer.signTransaction(populatedTx);
+
+      // const sentTx = await this._sendRawTransaction(signedTx);
+      // console.log("sentTx", sentTx);
+
+      // 2. 
+      // const sentTx = await signer.sendTransaction(tx);
+      // console.log("sentTx", sentTx);
+
+      // 3. 
+      let params = [
+        {
+          from: '0x672e7a695066b131cE36842D978Ad9e251A2Df7E',
+          to: '0x672e7a695066b131cE36842D978Ad9e251A2Df7E',
+          gas: '0x76c0', // 30400
+          value: '0x0', // 2441406250
+        }
+      ]; 
+
+      window.klaytn
+        .request({
+          method: 'klay_sendTransaction',
+          params,
+        })
+        .then((result) => {
+          // The result varies by RPC method.
+          // For example, this method returns a transaction hash hexadecimal string upon success.
+          console.log(result);
+        })
+        .catch((error) => {
+          // If the request fails, the Promise rejects with an error.
+          console.log(error);
+        });
+
     } catch (error) {
       console.log(error);
     }
