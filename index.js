@@ -165,7 +165,7 @@ async function execute() {
       window.klaytn
         .request({
           method: 'klay_sendTransaction',
-          params,
+          params:params,
         })
         .then((result) => {
           // The result varies by RPC method.
